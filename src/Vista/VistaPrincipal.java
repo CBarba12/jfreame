@@ -186,6 +186,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         boton_reporte_busqueda.setText("Reporte");
 
         boton_Buscar_busqueda.setText("Buscar");
+        boton_Buscar_busqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_Buscar_busquedaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -754,6 +759,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ControllerPrincipal.guardarVistaPrincipal();
     }//GEN-LAST:event_Boton_guadar_intrumentoActionPerformed
 
+    private void boton_Buscar_busquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Buscar_busquedaActionPerformed
+       ControllerPrincipal.busqueda();
+    }//GEN-LAST:event_boton_Buscar_busquedaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -871,6 +880,8 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void insertar() {
 
+
+        
         String codigo = JTextcodigo_Instrumento_jTextField1.getText();
         String nombre = JtextNombre_Instrumento_jTextField2.getText();
         String unidad = JtextUnidad_Instrumento_jTextField3.getText();
@@ -932,6 +943,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     public DefaultTableModel getModelito() {
         return modelito;
+    }
+
+    public JTextField getTextfiel_nombre_busqueda() {
+        return textfiel_nombre_busqueda;
     }
 
  

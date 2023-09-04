@@ -23,6 +23,8 @@ public class ControllerPrincipal {
             ventana.getJtextNombre_Instrumento_jTextField2().setText("");  
             ventana.getJtextUnidad_Instrumento_jTextField3().setText("");  
             ventana.getBoton_borrar_instrumento().setEnabled(false);
+            ventana.getTabla().clearSelection();
+            ventana.getJTextcodigo_Instrumento_jTextField1().setEnabled(true);
    
      
      }
@@ -81,8 +83,30 @@ public class ControllerPrincipal {
                 ventana.getJtextNombre_Instrumento_jTextField2().setText(nombre);
                 ventana.getJtextUnidad_Instrumento_jTextField3().setText(unidad);
                 ventana.getJTextcodigo_Instrumento_jTextField1().setEnabled(false);// Deshabilitar la edición del campo "Código"
+                ventana.getBoton_borrar_instrumento().setEnabled(true);
             }
         }
     
     }
+    
+    
+    public static void busqueda(){
+
+                    String cadena=ventana.getTextfiel_nombre_busqueda().getText();
+                    
+                  for (int row = 0; row < ventana.getTabla().getRowCount(); row++) {
+                    for (int col = 0; col < ventana.getTabla().getColumnCount(); col++) {
+                       String cadena2=(String)ventana.getTabla().getValueAt(col, 0);
+                         
+                        if (cadena2.equals(cadena)) {
+                           ventana.getTabla().changeSelection(row, 0, false, false);
+                     
+                        }
+                    }
+                }
+
+
+
+     }
 }
+
