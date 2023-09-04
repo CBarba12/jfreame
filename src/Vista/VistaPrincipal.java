@@ -4,8 +4,15 @@
  */
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import Controlador.*;
 
 /**
  *
@@ -21,6 +28,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         formatomodelo();
         insertar();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
     }
 
     /**
@@ -729,62 +737,21 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        // TODO add your handling code here:
-
-        if (evt.getClickCount() == 1) { // Detectar un solo clic
-            boton_borrar_instrumento.setEnabled(true);
-            int selectedRow = tabla.getSelectedRow();
-            if (selectedRow >= 0) {
-                String codigo = (String) tabla.getValueAt(selectedRow, 0);
-                String nombre = (String) tabla.getValueAt(selectedRow, 1);
-                String unidad = (String) tabla.getValueAt(selectedRow, 2);
-                JTextcodigo_Instrumento_jTextField1.setText(codigo);
-                JtextNombre_Instrumento_jTextField2.setText(nombre);
-                JtextUnidad_Instrumento_jTextField3.setText(unidad);
-                JTextcodigo_Instrumento_jTextField1.setEnabled(false);// Deshabilitar la edición del campo "Código"
-            }
-        }
-
+        ControllerPrincipal.MouseClick(evt);
     }//GEN-LAST:event_tablaMouseClicked
 
+ 
     private void boton_borrar_instrumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_borrar_instrumentoActionPerformed
-        // TODO add your handling code here:
-        if (tabla.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Debes elegir la fila a eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
-        } else {
-            int linea = tabla.getSelectedRow();
-            modelito.removeRow(linea);
-            boton_borrar_instrumento.setEnabled(false);
-            JTextcodigo_Instrumento_jTextField1.setEnabled(true);
-            JTextcodigo_Instrumento_jTextField1.setText("");
-            JtextNombre_Instrumento_jTextField2.setText("");
-            JtextUnidad_Instrumento_jTextField3.setText("");
-
-        }
-
+       ControllerPrincipal.borrar_Intrumentos();
     }//GEN-LAST:event_boton_borrar_instrumentoActionPerformed
 
     private void boton_Limpiar_intrumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_Limpiar_intrumentoActionPerformed
         // TODO add your handling code here:
-
-        JTextcodigo_Instrumento_jTextField1.setText("");
-        JtextNombre_Instrumento_jTextField2.setText("");
-        JtextUnidad_Instrumento_jTextField3.setText("");
-        this.boton_borrar_instrumento.setEnabled(false);
+           ControllerPrincipal.limpiarvista();
     }//GEN-LAST:event_boton_Limpiar_intrumentoActionPerformed
 
     private void Boton_guadar_intrumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_guadar_intrumentoActionPerformed
-        // TODO add your handling code here:
-        if (tabla.getSelectedRow() >= 0) {
-            // Seleccionar una fila existente para editar
-            int selectedRow = tabla.getSelectedRow();
-            // Modificar los valores de la fila seleccionada
-            tabla.setValueAt(JTextcodigo_Instrumento_jTextField1.getText(), selectedRow, 0);
-            tabla.setValueAt(JtextNombre_Instrumento_jTextField2.getText(), selectedRow, 1);
-            tabla.setValueAt(JtextUnidad_Instrumento_jTextField3.getText(), selectedRow, 2);
-        } else {
-            this.insertar();
-        }
+        ControllerPrincipal.guardarVistaPrincipal();
     }//GEN-LAST:event_Boton_guadar_intrumentoActionPerformed
 
     /**
@@ -895,7 +862,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JTextField textfiel_nombre_busqueda;
     // End of variables declaration//GEN-END:variables
-
+         
     private void formatomodelo() {
         String cabeceras[] = {"Codigo", "Nombre", "Unidad"};
         modelito.setColumnIdentifiers(cabeceras);
@@ -918,4 +885,55 @@ public class VistaPrincipal extends javax.swing.JFrame {
         tabla.setModel(modelito);
 
     }
+
+    public JButton getBoton_guadar_intrumento() {
+        return Boton_guadar_intrumento;
+    }
+
+    public JTextField getJTextcodigo_Instrumento_jTextField1() {
+        return JTextcodigo_Instrumento_jTextField1;
+    }
+
+    public JTextField getJtextNombre_Instrumento_jTextField2() {
+        return JtextNombre_Instrumento_jTextField2;
+    }
+
+    public JTextField getJtextUnidad_Instrumento_jTextField3() {
+        return JtextUnidad_Instrumento_jTextField3;
+    }
+
+    public JTabbedPane getPanel_global_obciones() {
+        return Panel_global_obciones;
+    }
+
+    public JButton getBoton_Buscar_busqueda() {
+        return boton_Buscar_busqueda;
+    }
+
+    public JButton getBoton_Limpiar_intrumento() {
+        return boton_Limpiar_intrumento;
+    }
+
+    public JButton getBoton_borrar_instrumento() {
+        return boton_borrar_instrumento;
+    }
+
+    public JButton getBoton_reporte_busqueda() {
+        return boton_reporte_busqueda;
+    }
+
+    public JLabel getCodigo_jLabel1() {
+        return codigo_jLabel1;
+    }
+
+    public JTable getTabla() {
+        return tabla;
+    }
+
+    public DefaultTableModel getModelito() {
+        return modelito;
+    }
+
+ 
+    
 }
