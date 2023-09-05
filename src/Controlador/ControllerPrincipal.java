@@ -34,9 +34,11 @@ public class ControllerPrincipal {
             // Seleccionar una fila existente para editar
             int selectedRow = ventana.getTabla().getSelectedRow();
             // Modificar los valores de la fila seleccionada
-          ventana.getTabla().setValueAt(ventana.getJTextcodigo_Instrumento_jTextField1().getText(), selectedRow, 0);
-           ventana.getTabla().setValueAt(ventana.getJtextNombre_Instrumento_jTextField2().getText(), selectedRow, 1);
-           ventana.getTabla().setValueAt(ventana.getJtextUnidad_Instrumento_jTextField3().getText(), selectedRow, 2);
+         ventana.getTabla().setValueAt(ventana.getJTextcodigo_Instrumento_jTextField1().getText(), selectedRow, 0);
+         ventana.getTabla().setValueAt(ventana.getJtextNombre_Instrumento_jTextField2().getText(), selectedRow, 1);
+         ventana.getTabla().setValueAt(ventana.getJtextUnidad_Instrumento_jTextField3().getText(), selectedRow, 2);
+         
+         
         } else {
         String codigo = ventana.getJTextcodigo_Instrumento_jTextField1().getText();
         String nombre = ventana.getJtextNombre_Instrumento_jTextField2().getText();
@@ -55,6 +57,8 @@ public class ControllerPrincipal {
     }
     
     public static void borrar_Intrumentos(){
+        
+        
     if (ventana.getTabla().getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Debes elegir la fila a eliminar", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {

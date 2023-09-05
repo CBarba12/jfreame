@@ -745,7 +745,6 @@ public class VistaPrincipal extends javax.swing.JFrame {
         ControllerPrincipal.MouseClick(evt);
     }//GEN-LAST:event_tablaMouseClicked
 
- 
     private void boton_borrar_instrumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_borrar_instrumentoActionPerformed
        ControllerPrincipal.borrar_Intrumentos();
     }//GEN-LAST:event_boton_borrar_instrumentoActionPerformed
